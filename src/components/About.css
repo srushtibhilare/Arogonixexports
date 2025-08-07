@@ -1,0 +1,625 @@
+:root {
+  --primary-teal: #00C9A7;
+  --teal-light: rgba(0, 201, 167, 0.2);
+  --secondary-purple: #845EC2;
+  --accent-coral: #FF6B6B;
+  --dark-navy: #1A1A2E;
+  --light-gray: #F9F9F9;
+  --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.about-section {
+  padding: 8rem 0;
+  background: linear-gradient(to right, #f8f9fa 0%, #e9f5e9 100%);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-visual {
+  flex: 1;
+  padding: 3rem;
+}
+
+.about-text {
+  flex: 1;
+  padding-right: 3rem;
+}
+
+/* Energy Animation */
+.energy-animation {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.energy-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-teal), #2ecc71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(0, 201, 167, 0.4);
+  z-index: 2;
+}
+
+.energy-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 201, 167, 0.2);
+  animation: pulse 3s infinite;
+}
+
+.energy-particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  animation: float 4s infinite ease-in-out;
+  animation-delay: var(--delay);
+  opacity: 0.8;
+}
+
+.energy-icon {
+  position: relative;
+  z-index: 3;
+}
+
+.icon-main {
+  font-size: 5rem;
+  color: white;
+}
+
+.energy-connection {
+  position: absolute;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-teal), rgba(0, 201, 167, 0));
+  transform-origin: left center;
+}
+
+.energy-connection-1 {
+  width: 120px;
+  top: 40%;
+  left: 60%;
+  transform: rotate(15deg);
+  animation: connectionPulse 3s infinite;
+}
+
+.energy-connection-2 {
+  width: 150px;
+  top: 60%;
+  left: 60%;
+  transform: rotate(-10deg);
+  animation: connectionPulse 3s infinite 0.5s;
+}
+
+.energy-node {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  right: 10%;
+  top: 35%;
+}
+
+.energy-node-2 {
+  top: 65%;
+}
+
+.icon-node {
+  font-size: 2rem;
+  color: var(--primary-teal);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+@keyframes connectionPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+}
+
+/* Text Styles */
+.section-title {
+  font-size: 2.8rem;
+  color: var(--dark-navy);
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.highlight {
+  color: var(--primary-teal);
+}
+
+.lead-text {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--dark-navy);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+/* Mission Grid */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mission-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 201, 167, 0.1);
+}
+
+.mission-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.mission-icon .icon {
+  font-size: 2rem;
+  color: var(--primary-teal);
+}
+
+.mission-card h3 {
+  font-size: 1.5rem;
+  color: var(--dark-navy);
+  margin-bottom: 1rem;
+}
+
+.mission-card p {
+  color: var(--dark-navy);
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .about-content {
+    gap: 3rem;
+  }
+  
+  .energy-animation {
+    height: 400px;
+  }
+  
+  .energy-core {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-visual {
+    padding: 2rem;
+    width: 100%;
+  }
+  
+  .about-text {
+    padding: 0 2rem;
+  }
+  
+  .energy-animation {
+    height: 300px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* Responsive Enhancements - Added after original CSS */
+
+/* Ultra-Wide Screens (1920px and up) */
+@media (min-width: 1920px) {
+  .about-section {
+    padding: 10rem 0;
+  }
+  
+  .about-content {
+    max-width: 1600px;
+  }
+  
+  .energy-animation {
+    height: 600px;
+  }
+  
+  .energy-core {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .section-title {
+    font-size: 3.5rem;
+  }
+  
+  .lead-text {
+    font-size: 1.5rem;
+    max-width: 700px;
+  }
+}
+
+/* Large Desktop (1440px-1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .about-content {
+    gap: 6rem;
+  }
+  
+  .energy-animation {
+    height: 550px;
+  }
+}
+
+/* Small Desktop (1201px-1439px) */
+@media (min-width: 1201px) and (max-width: 1439px) {
+  .about-content {
+    gap: 4rem;
+  }
+  
+  .mission-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Landscape (992px-1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .about-section {
+    padding: 6rem 0;
+  }
+  
+  .mission-card {
+    padding: 2rem;
+  }
+  
+  .mission-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Tablet Portrait (768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .about-visual {
+    padding: 1.5rem;
+  }
+  
+  .about-text {
+    padding: 0 1.5rem;
+  }
+  
+  .energy-node {
+    width: 60px;
+    height: 60px;
+  right: 5%;
+  }
+  
+  .icon-node {
+    font-size: 1.5rem;
+  }
+  
+  .mission-card h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Large Mobile (576px-767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .about-section {
+    padding: 5rem 0;
+  }
+  
+  .energy-animation {
+    height: 250px;
+  }
+  
+  .energy-core {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .icon-main {
+    font-size: 3.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .lead-text {
+    font-size: 1.1rem;
+  }
+  
+  .mission-card {
+    padding: 1.8rem;
+  }
+}
+
+/* Small Mobile (360px-575px) */
+@media (min-width: 360px) and (max-width: 575px) {
+  .about-section {
+    padding: 4rem 0;
+  }
+  
+  .about-text,
+  .about-visual {
+    padding: 0 1rem;
+  }
+  
+  .energy-animation {
+    height: 200px;
+  }
+  
+  .energy-core {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .energy-particle {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .energy-connection {
+    height: 2px;
+  }
+  
+  .energy-connection-1 {
+    width: 80px;
+  }
+  
+  .energy-connection-2 {
+    width: 100px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .lead-text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mission-card {
+    padding: 1.5rem;
+  }
+  
+  .mission-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .mission-icon .icon {
+    font-size: 1.5rem;
+  }
+  
+  .mission-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Foldable Devices (280px-359px) */
+@media (max-width: 359px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .mission-grid {
+    gap: 1rem;
+  }
+  
+  .mission-card {
+    padding: 1.2rem;
+  }
+}
+
+/* Mobile Landscape Optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .about-section {
+    padding: 4rem 0;
+  }
+  
+  .about-content {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  
+  .energy-animation {
+    height: 250px;
+    min-height: auto;
+  }
+  
+  .about-text {
+    padding-top: 1rem;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .energy-pulse,
+  .energy-particle,
+  .energy-connection,
+  .mission-card {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .mission-card:hover {
+    transform: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .energy-core {
+    outline: 3px solid black;
+  }
+  
+  .energy-connection {
+    background: black !important;
+  }
+  
+  .mission-card {
+    border: 2px solid black;
+  }
+  
+  .mission-icon {
+    border: 2px solid var(--primary-teal);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .about-section {
+    background: linear-gradient(to right, #121212 0%, #0a1a0a 100%);
+  }
+  
+  .section-title,
+  .lead-text,
+  .mission-card h3,
+  .mission-card p {
+    color: white;
+  }
+  
+  .mission-card {
+    background: #1e1e1e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .mission-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 201, 167, 0.2);
+  }
+  
+  .energy-node {
+    background: #2d2d2d;
+  }
+}
+/* About.css additions */
+
+.centered-title-wrapper {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.centered-title {
+  display: inline-block;
+  position: relative;
+  font-size: 2.5rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.centered-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--highlight-color);
+}
+
+.about-content {
+  margin-top: 2rem;
+}
+
+/* Adjust the existing about-section padding if needed */
+.about-section {
+  padding: 5rem 0;
+}
+
+/* Adjust other elements as needed to accommodate the new centered title */
+.about-text {
+  padding-top: 0; /* Remove top padding since title is now above */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .centered-title {
+    font-size: 2rem;
+  }
+  
+  .centered-title-wrapper {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .centered-title {
+    font-size: 1.8rem;
+  }
+}
