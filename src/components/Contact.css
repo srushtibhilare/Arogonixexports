@@ -1,31 +1,26 @@
-/* Contact.css */
-
-/* Base Styles */
 :root {
   --primary-color: #4361ee;
+  --primary-light: #6a7ef2;
   --secondary-color: #3f37c9;
   --accent-color: #4cc9f0;
+  --accent-dark: #38b6db;
   --light-color: #f8f9fa;
   --dark-color: #212529;
-  --success-color: #b0e5ad;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+  --success-color: #4ade80;
+  --error-color: #f87171;
+  --warning-color: #fbbf24;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --border-radius: 12px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Font Awesome Icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7ff;
-  color: var(--dark-color);
-  line-height: 1.6;
-}
-
-/* Contact Container */
+/* Base Styles with Animated Background */
 .contact-container {
   min-height: 100vh;
   display: flex;
@@ -33,24 +28,62 @@ body {
   justify-content: center;
   padding: 2rem;
   background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+.contact-container::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(76, 201, 240, 0.05) 0%, transparent 70%);
+  animation: rotate 25s linear infinite reverse;
+  z-index: 0;
+}
+
+/* Contact Wrapper with Glass Morphism Effect */
 .contact-wrapper {
   max-width: 1200px;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: perspective(1000px) rotateX(0deg);
+  transition: var(--transition-slow);
 }
 
-/* Header Styles */
+.contact-wrapper:hover {
+  transform: perspective(1000px) rotateX(2deg);
+  box-shadow: 0 15px 35px rgba(67, 97, 238, 0.2);
+}
+
+/* Animated Header with Gradient */
 .contact-header {
   text-align: center;
   padding: 3rem 2rem 2rem;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   position: relative;
   overflow: hidden;
@@ -59,18 +92,22 @@ body {
 .contact-header::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-  transform: rotate(30deg);
-  animation: shimmer 8s infinite linear;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 3s infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: rotate(30deg) translate(-10%, -10%); }
-  100% { transform: rotate(30deg) translate(10%, 10%); }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .contact-header h1 {
@@ -78,6 +115,8 @@ body {
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
 .contact-header h1::after {
@@ -90,6 +129,9 @@ body {
   height: 4px;
   background-color: var(--accent-color);
   border-radius: 2px;
+  animation: underlineGrow 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center;
+  transform: scaleX(0);
 }
 
 .contact-subtitle {
@@ -97,9 +139,11 @@ body {
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
+  animation: fadeInUp 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
-/* Content Layout */
+/* Content Layout with Staggered Animations */
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,7 +151,7 @@ body {
   padding: 3rem;
 }
 
-/* Contact Info Section */
+/* Contact Info Section with Floating Icons */
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -119,57 +163,144 @@ body {
   align-items: flex-start;
   gap: 1.5rem;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   background: rgba(67, 97, 238, 0.05);
-  transition: var(--transition);
+  transition: var(--transition-slow);
   border-left: 4px solid transparent;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+.info-item:nth-child(1) { animation-delay: 0.4s; }
+.info-item:nth-child(2) { animation-delay: 0.6s; }
+.info-item:nth-child(3) { animation-delay: 0.8s; }
 
 .info-item:hover {
   background: rgba(67, 97, 238, 0.1);
   border-left: 4px solid var(--primary-color);
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-md);
 }
 
 .info-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
 }
 
 .info-icon .icon {
   color: white;
   font-size: 1.2rem;
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.info-item:hover .info-icon {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+}
+
+.info-item:hover .info-icon .icon {
+  transform: scale(1.2);
 }
 
 .info-text h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
+  transition: var(--transition-base);
+}
+
+.info-item:hover .info-text h3 {
+  color: var(--secondary-color);
 }
 
 .info-text p {
   color: var(--dark-color);
   opacity: 0.8;
+  transition: var(--transition-base);
 }
 
-/* Form Styles */
+.info-item:hover .info-text p {
+  opacity: 1;
+}
+
+/* Form Styles with Interactive Elements */
 .contact-form-container {
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .success-message {
   background: white;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-slow);
+  transform: scale(0.9);
+}
+
+.success-message.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--success-color), #86efac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+.success-icon .icon {
+  color: white;
+  font-size: 2rem;
 }
 
 .success-message h3 {
@@ -181,6 +312,8 @@ body {
 .success-message p {
   color: var(--dark-color);
   opacity: 0.8;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .contact-form {
@@ -200,11 +333,22 @@ body {
   margin-bottom: 0.5rem;
   color: var(--primary-color);
   font-weight: 500;
+  transition: var(--transition-base);
 }
 
 .input-icon {
   color: var(--primary-color);
   font-size: 1.1rem;
+  transition: var(--transition-base);
+}
+
+.form-group:focus-within label {
+  color: var(--secondary-color);
+}
+
+.form-group:focus-within .input-icon {
+  color: var(--accent-color);
+  transform: scale(1.2);
 }
 
 .form-group input,
@@ -212,10 +356,12 @@ body {
   width: 100%;
   padding: 1rem 1rem 1rem 2.5rem;
   border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-size: 1rem;
-  transition: var(--transition);
+  transition: var(--transition-slow);
   background-color: rgba(233, 236, 239, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .form-group input:focus,
@@ -232,28 +378,74 @@ body {
   padding-left: 1rem;
 }
 
-/* Submit Button */
+/* Floating Label Effect */
+.form-group .floating-label {
+  position: absolute;
+  left: 2.5rem;
+  top: 1rem;
+  color: var(--text-light);
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+.form-group input:focus + .floating-label,
+.form-group input:not(:placeholder-shown) + .floating-label,
+.form-group textarea:focus + .floating-label,
+.form-group textarea:not(:placeholder-shown) + .floating-label {
+  top: -0.5rem;
+  left: 1.5rem;
+  font-size: 0.8rem;
+  background: white;
+  padding: 0 0.5rem;
+  color: var(--primary-color);
+  z-index: 2;
+}
+
+/* Animated Submit Button */
 .submit-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
+  transition: var(--transition-slow);
+  box-shadow: var(--shadow-md);
   margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: var(--transition-slow);
 }
 
 .submit-btn:hover {
-  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+
+.submit-btn:hover::before {
+  left: 100%;
 }
 
 .submit-btn:active {
@@ -262,16 +454,124 @@ body {
 
 .btn-icon {
   font-size: 1.1rem;
+  transition: var(--transition-base);
+}
+
+.submit-btn:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+/* Ripple Effect */
+.submit-btn:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.submit-btn:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+/* Social Media Links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(67, 97, 238, 0.1);
+  color: var(--primary-color);
+  transition: var(--transition-base);
+}
+
+.social-link:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px) scale(1.1);
 }
 
 /* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes underlineGrow {
+  from {
+    transform: translateX(-50%) scaleX(0);
+  }
+  to {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-.info-icon {
-  animation: float 3s ease-in-out infinite;
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(20);
+    opacity: 0;
+  }
 }
 
 /* Responsive Design */
@@ -300,6 +600,10 @@ body {
     padding: 2rem 1rem;
   }
   
+  .contact-header h1 {
+    font-size: 2rem;
+  }
+  
   .contact-content {
     padding: 2rem 1rem;
   }
@@ -307,51 +611,8 @@ body {
   .info-item {
     flex: 1 1 100%;
   }
-}
-
-/* Special Effects */
-.form-group::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.form-group:focus-within::after {
-  width: 100%;
-}
-
-/* Ripple Effect */
-@keyframes ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
+  
+  .submit-btn {
+    width: 100%;
   }
-}
-
-.submit-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.submit-btn:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
-}
-
-.submit-btn:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
 }

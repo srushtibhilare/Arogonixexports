@@ -1,11 +1,21 @@
+/* Modern Color Palette with Vibrant Tones */
 :root {
-  --green-primary: #4CAF50;
-  --blue-primary: #2196F3;
-  --teal-primary: #009688;
+  --green-primary: #2ecc71;
+  --blue-primary: #3498db;
+  --teal-primary: #1abc9c;
+  --purple-accent: #9b59b6;
+  --sunshine-yellow: #f1c40f;
   --white: #ffffff;
   --black: #121212;
+  --dark-overlay: rgba(0, 0, 0, 0.4);
+  
+  /* Animation properties */
+  --spring-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --smooth-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --fast-in: cubic-bezier(0.9, 0.1, 0.1, 0.9);
 }
 
+/* Base Banner Styles with Parallax Effect */
 .banner {
   position: relative;
   width: 100%;
@@ -16,15 +26,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--white);
   text-align: center;
   cursor: grab;
+  perspective: 1000px;
 }
 
 .banner:active {
   cursor: grabbing;
 }
 
+/* Slide Container with 3D Depth */
 .slide {
   position: absolute;
   top: 0;
@@ -38,15 +50,18 @@
   padding: 2rem;
   z-index: 1;
   will-change: transform;
+  transform-style: preserve-3d;
 }
 
+/* Dynamic Background with Tilt Effect */
 .slide-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
   overflow: hidden;
+  transition: transform 0.8s var(--smooth-ease);
 }
 
 .slide-image {
@@ -57,78 +72,183 @@
   object-position: center;
   transform-origin: center;
   will-change: transform;
+  filter: brightness(0.9) contrast(1.1);
 }
 
+/* Colorful Overlay with Gradient Mix */
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.4;
+  background: linear-gradient(135deg, var(--dark-overlay) 0%, transparent 100%);
   mix-blend-mode: multiply;
-  transition: background-color 0.5s ease;
+  transition: all 0.8s var(--smooth-ease);
 }
 
+/* Content Container with Depth */
 .slide-content {
   position: relative;
   z-index: 2;
   max-width: 1200px;
   padding: 0 2rem;
+  transform-style: preserve-3d;
 }
 
+/* Animated Icons with Floating Effect */
 .icon-container {
   margin-bottom: 1.5rem;
+  perspective: 1000px;
 }
 
 .slide-icon {
-  font-size: 3rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  transition: all 0.3s ease;
+  font-size: 3.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.6s var(--spring-bounce);
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
 }
 
+.slide-icon:hover {
+  transform: rotateY(180deg) scale(1.2);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Dynamic Typography with Text Shadow Animation */
 .slide h1 {
-  font-size: 4rem;
-  font-weight: 800;
+  font-size: 4.5rem;
+  font-weight: 900;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   line-height: 1.2;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, var(--white), rgba(255,255,255,0.8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.5s var(--smooth-ease);
 }
 
 .slide h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 400;
   max-width: 800px;
   margin: 0 auto 2rem;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0.9;
+  transition: all 0.5s var(--smooth-ease);
 }
 
+/* Glow Button Effect */
 .cta-container {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  perspective: 800px;
 }
 
 .cta-button {
   background: transparent;
   color: white;
   border: 2px solid;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
+  transition: all 0.5s var(--spring-bounce);
+  backdrop-filter: blur(8px);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 100%);
+  z-index: -1;
+  transition: all 0.5s ease;
+  opacity: 0;
 }
 
 .cta-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
+.cta-button:hover::before {
+  opacity: 1;
+  animation: shine 1.5s ease infinite;
+}
+
+/* Navigation Controls with Micro-Interactions */
 .controls {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--spring-bounce);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, 
+    rgba(255,255,255,0.3) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.nav-btn:hover::after {
+  opacity: 1;
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Animated Dot Indicators */
+.dots {
   position: absolute;
   bottom: 2rem;
   left: 50%;
@@ -138,52 +258,57 @@
   z-index: 10;
 }
 
-.nav-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.dots {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.75rem;
-  z-index: 10;
-}
-
 .dot {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s ease;
   border: 2px solid white;
+  transition: all 0.6s var(--spring-bounce);
+  position: relative;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  transition: all 0.4s ease;
 }
 
 .dot.active {
-  transform: scale(1.3);
+  transform: scale(1.4);
+  border-color: transparent;
 }
 
+.dot.active::before {
+  width: 12px;
+  height: 12px;
+  background: var(--sunshine-yellow);
+  box-shadow: 0 0 10px var(--sunshine-yellow);
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--green-primary), var(--teal-primary));
+  z-index: 10;
+  transform-origin: left;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* Scroll Indicator with Bounce Animation */
 .scroll-indicator {
   position: absolute;
-  bottom: 1rem;
+  bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -194,30 +319,85 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   z-index: 10;
   cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.05);
 }
 
 .scroll-indicator svg {
   margin-bottom: 0.5rem;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  animation: bounce 2s infinite var(--spring-bounce);
 }
 
-.progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 10;
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0);
+  }
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .slide h1 {
+    font-size: 4rem;
+  }
+  
+  .slide h2 {
+    font-size: 1.8rem;
+  }
+  
+  .slide-icon {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 992px) {
   .slide h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
   
   .slide h2 {
     font-size: 1.6rem;
+  }
+  
+  .nav-btn {
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -227,65 +407,83 @@
   }
   
   .slide h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
   
   .slide h2 {
-    font-size: 1.4rem;
-    max-width: 90%;
+    font-size: 1.3rem;
   }
   
-  .nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .controls {
+    bottom: 2rem;
+  }
+  
+  .dots {
+    bottom: 1.5rem;
   }
 }
 
 @media (max-width: 576px) {
   .slide h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   
   .slide h2 {
-    font-size: 1.2rem;
-  }
-  
-  .controls {
-    bottom: 1.5rem;
-  }
-  
-  .scroll-indicator {
-    font-size: 0.8rem;
-  }
-  
-  .scroll-indicator svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .icon-container {
-    margin-bottom: 1rem;
+    font-size: 1.1rem;
   }
   
   .slide-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
   }
 }
 
-/* Animation Enhancements */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .slide h1 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
-  50% {
-    transform: translateY(-10px);
+  
+  .slide h2 {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  
+  .image-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+  }
+  
+  .cta-button {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
   }
 }
 
-/* Accessibility Improvements */
+/* Reduced Motion Accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .slide-icon {
+    animation: none !important;
+  }
+  
+  .progress-bar {
     animation: none !important;
     transition: none !important;
   }

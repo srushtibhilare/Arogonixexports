@@ -19,7 +19,7 @@
   background: linear-gradient(135deg, var(--dark-color) 0%, #1b5e20 100%);
   color: var(--light-color);
   padding: 4rem 0 2rem;
-  position: relative;
+  position: relative; 
   overflow: hidden;
 }
 
