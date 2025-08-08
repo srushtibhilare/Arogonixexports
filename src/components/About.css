@@ -238,7 +238,7 @@
     0 0 40px rgba(0, 201, 167, 0.5);
 }
 
-.energy-node-2 {
+/* .energy-node-2 {
   top: 65%;
 }
 
@@ -247,7 +247,7 @@
   color: var(--teal-primary);
   transition: all 0.6s var(--spring-bounce);
   transform-style: preserve-3d;
-}
+} */
 
 .energy-node:hover .icon-node {
   color: var(--purple-accent);
