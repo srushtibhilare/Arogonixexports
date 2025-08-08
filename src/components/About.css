@@ -64,13 +64,13 @@
 }
 
 /* Dynamic Title with Text Gradient & Animation */
-.centered-title-wrapper {
+/* .centered-title-wrapper {
   text-align: center;
   margin-bottom: 6rem;
   perspective: var(--perspective);
-}
+} */
 
-.section-title {
+/* .section-title {
   font-size: 4rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--teal-primary), var(--purple-accent));
@@ -82,9 +82,9 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transform-style: preserve-3d;
   animation: title-float 8s infinite ease-in-out;
-}
+} */
 
-.section-title::after {
+/* .section-title::after {
   content: '';
   position: absolute;
   bottom: -1.5rem;
@@ -96,7 +96,7 @@
   border-radius: 3px;
   filter: drop-shadow(0 0 8px rgba(0, 201, 167, 0.5));
   animation: underline-pulse 3s infinite var(--smooth-ease);
-}
+} */
 
 /* 3D Content Layout */
 .about-content {
@@ -114,12 +114,12 @@
   perspective: var(--perspective);
 }
 
-.energy-animation {
+/* .energy-animation {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-}
+} */
 
 .energy-core {
   position: absolute;
@@ -143,7 +143,7 @@
   transform-style: preserve-3d; */
 }
 
-.energy-pulse {
+/* .energy-pulse {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -151,7 +151,7 @@
   background: radial-gradient(circle, rgba(0, 201, 167, 0.3) 0%, transparent 70%);
   animation: pulse 4s infinite var(--smooth-ease);
   transform-style: preserve-3d;
-}
+} */
 
 .energy-particle {
   position: absolute;
@@ -178,7 +178,7 @@
 }
 
 /* Animated Energy Connections */
-.energy-connection {
+/* .energy-connection {
   position: absolute;
   height: 4px;
   background: linear-gradient(to right, var(--teal-primary), rgba(0, 201, 167, 0.5));
@@ -186,7 +186,7 @@
   box-shadow: 0 0 15px rgba(0, 201, 167, 0.6);
   filter: blur(0.5px);
   transform-style: preserve-3d;
-}
+} */
 
 .energy-connection-1 {
   width: 180px;
@@ -234,7 +234,7 @@
     rotateY(15deg) 
     translateZ(20px);
   box-shadow: 
-    0 15px 50px rgba(0, 0, 0, 0.2),
+    0 15px 50px #00000033,
     0 0 40px rgba(0, 201, 167, 0.5);
 }
 
@@ -606,11 +606,11 @@
       0 0 0 1px rgba(255, 255, 255, 0.05);
   }
   
-  .mission-card:hover {
-    box-shadow: 
-      0 30px 80px rgba(0, 201, 167, 0.25),
-      0 0 0 1px rgba(0, 201, 167, 0.15);
-  }
+    .mission-card:hover {
+      box-shadow: 
+        0 30px 80px rgba(0, 201, 167, 0.25),
+        0 0 0 1px rgba(0, 201, 167, 0.15);
+    }
   
   .energy-node {
     background: #2d2d2d;
