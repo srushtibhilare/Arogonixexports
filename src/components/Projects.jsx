@@ -80,7 +80,7 @@ const Projects = () => {
         "Agrivoltaic Solar Projects — 5 MW scalable model",
         "Expanded Carbon Services — agroforestry, waste-to-energy"
       ],
-      color: "#FF6B6B",
+      color: "#acbae2ff",
       impact: [
         "Potential renewable energy generation: 8 GWh/year",
         "Dual land use efficiency improvement",

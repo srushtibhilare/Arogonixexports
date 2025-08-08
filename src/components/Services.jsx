@@ -91,7 +91,7 @@ const Services = () => {
       </section>
 
     
-      <section className="impact-section animate__fadeIn">
+      {/* <section className="impact-section animate__fadeIn">
         <h2 className="section-title">Planned <span className="highlight">Impact</span></h2>
         <p className="impact-subtitle">Aspirational Metrics</p>
         <div className="impact-grid">
@@ -116,7 +116,7 @@ const Services = () => {
             <FaFileDownload /> Download Company Profile
           </button>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
