@@ -7,6 +7,7 @@ import './Navber.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,20 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+      setActiveDropdown(null);
+    }
+  };
+
+  const toggleDropdown = (item) => {
+    if (activeDropdown === item) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(item);
+    }
   };
 
   return (
@@ -39,26 +54,35 @@ const Navbar = () => {
         
         <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
           <div className="nav-item">
-            <NavLink to="/">About <FiChevronDown className="dropdown-icon" /></NavLink>
-            <div className="dropdown-content">
-              <NavLink to="/about/company">Company</NavLink>
-              <NavLink to="/about/team">Team</NavLink>
-              {/* <NavLink to="/about/mission">Mission</NavLink> */}
+            <button 
+              className="nav-link-button" 
+              onClick={() => toggleDropdown('about')}
+            >
+              About <FiChevronDown className={`dropdown-icon ${activeDropdown === 'about' ? 'active' : ''}`} />
+            </button>
+            <div className={`dropdown-content ${activeDropdown === 'about' ? 'active' : ''}`}>
+              <NavLink to="/about/company" onClick={() => setIsOpen(false)}>Company</NavLink>
+              <NavLink to="/about/team" onClick={() => setIsOpen(false)}>Team</NavLink>
             </div>
           </div>
           
           <div className="nav-item">
-            <NavLink to="/solutions">Solutions <FiChevronDown className="dropdown-icon" /></NavLink>
-            <div className="dropdown-content">
-              <NavLink to="/solutions/biochar">Biochar Production</NavLink>
-              <NavLink to="/solutions/credits">Carbon Credits</NavLink>
-              <NavLink to="/solutions/consulting">Consulting</NavLink>
+            <button 
+              className="nav-link-button" 
+              onClick={() => toggleDropdown('solutions')}
+            >
+              Solutions <FiChevronDown className={`dropdown-icon ${activeDropdown === 'solutions' ? 'active' : ''}`} />
+            </button>
+            <div className={`dropdown-content ${activeDropdown === 'solutions' ? 'active' : ''}`}>
+              <NavLink to="/solutions/biochar" onClick={() => setIsOpen(false)}>Biochar Production</NavLink>
+              <NavLink to="/solutions/credits" onClick={() => setIsOpen(false)}>Carbon Credits</NavLink>
+              <NavLink to="/solutions/consulting" onClick={() => setIsOpen(false)}>Consulting</NavLink>
             </div>
           </div>
           
-          <NavLink to="/technology">Technology</NavLink>
-          <NavLink to="/impact">Impact</NavLink>
-          <button className="navbar-cta">Get Started</button>
+          <NavLink to="/technology" className="nav-link" onClick={() => setIsOpen(false)}>Technology</NavLink>
+          <NavLink to="/impact" className="nav-link" onClick={() => setIsOpen(false)}>Impact</NavLink>
+          <button className="navbar-cta" onClick={() => setIsOpen(false)}>Get Started</button>
         </div>
 
         <div className="navbar-toggle" onClick={toggleMenu}>
