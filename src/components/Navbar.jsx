@@ -39,7 +39,7 @@ const Navbar = () => {
         
         <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
           <div className="nav-item">
-            <NavLink to="/about">About <FiChevronDown className="dropdown-icon" /></NavLink>
+            <NavLink to="/">About <FiChevronDown className="dropdown-icon" /></NavLink>
             <div className="dropdown-content">
               <NavLink to="/about/company">Company</NavLink>
               <NavLink to="/about/team">Team</NavLink>
