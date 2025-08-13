@@ -97,101 +97,106 @@ const Technology = () => {
         </div>
       </motion.section>
 
-      <motion.section 
-        className="tech-solutions"
-        variants={itemVariants}
-      >
-        <h2 className="section-title">Core <span>Technologies</span></h2>
-        <div className="solutions-grid">
-          {techSolutions.map((solution, index) => (
-            <motion.div 
-              key={index}
-              className="solution-card"
-              whileHover={{ y: -5 }}
-              variants={itemVariants}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="solution-icon">
-                {solution.icon}
-              </div>
-              <h3>{solution.title}</h3>
-              <p className="solution-description">{solution.description}</p>
-              <ul className="solution-features">
-                {solution.features.map((feature, fIndex) => (
-                  <li key={fIndex}>{feature}</li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section 
-        className="tech-features"
-        variants={itemVariants}
-      >
-        <h2 className="section-title">Key <span>Differentiators</span></h2>
-        <div className="features-grid">
-          {techFeatures.map((feature, index) => (
-            <motion.div 
-              key={index}
-              className="feature-card"
-              whileHover={{ scale: 1.03 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 + 0.3 }}
-            >
-              <div className="feature-icon-container">
-                {feature.icon}
-              </div>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section 
-        className="tech-process"
-        variants={itemVariants}
-      >
-        <h2 className="section-title">Our <span>Process</span> Flow</h2>
-        <div className="process-steps">
-          {[
-            "Feedstock Preparation",
-            "Thermal Conversion",
-            "Gas Treatment",
-            "Biochar Refinement",
-            "Product Utilization"
-          ].map((step, index) => (
-            <motion.div 
-              key={index}
-              className="process-step"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2 }}
-            >
-              <div className="step-number">{index + 1}</div>
-              <h3>{step}</h3>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section 
-        className="tech-cta"
-        variants={itemVariants}
-      >
-        <h2>Ready to integrate our technology?</h2>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="cta-button"
+      <div className="page-content">
+        <motion.section 
+          className="tech-solutions"
+          variants={itemVariants}
         >
-          Request Technical Documentation
-        </motion.button>
-      </motion.section>
+          <h2 className="section-title">Core <span>Technologies</span></h2>
+          <div className="solutions-grid">
+            {techSolutions.map((solution, index) => (
+              <motion.div 
+                key={index}
+                className="solution-card"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                variants={itemVariants}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="solution-icon">
+                  {solution.icon}
+                </div>
+                <h3>{solution.title}</h3>
+                <p className="solution-description">{solution.description}</p>
+                <ul className="solution-features">
+                  {solution.features.map((feature, fIndex) => (
+                    <li key={fIndex}>{feature}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section 
+          className="tech-features"
+          variants={itemVariants}
+        >
+          <h2 className="section-title">Key <span>Differentiators</span></h2>
+          <div className="features-grid">
+            {techFeatures.map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="feature-card"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.3 }}
+              >
+                <div className="feature-icon-container">
+                  {feature.icon}
+                </div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section 
+          className="tech-process"
+          variants={itemVariants}
+        >
+          <h2 className="section-title">Our <span>Process</span> Flow</h2>
+          <div className="process-steps">
+            {[
+              "Feedstock Preparation",
+              "Thermal Conversion",
+              "Gas Treatment",
+              "Biochar Refinement",
+              "Product Utilization"
+            ].map((step, index) => (
+              <motion.div 
+                key={index}
+                className="process-step"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="step-number">{index + 1}</div>
+                <h3>{step}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section 
+          className="tech-cta"
+          variants={itemVariants}
+        >
+          <h2>Ready to integrate our technology?</h2>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cta-button"
+          >
+            Request Technical Documentation
+          </motion.button>
+        </motion.section>
+      </div>
     </motion.div>
   );
 };
