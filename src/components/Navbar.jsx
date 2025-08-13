@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 import './Navber.css';
 
@@ -23,7 +24,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo-wrapper">
-          <a href="/" className="logo-link">
+          <Link to="/" className="logo-link">
             <img 
               src={logo} 
               alt="Company Logo" 
@@ -33,31 +34,30 @@ const Navbar = () => {
                 e.target.src = 'path-to-fallback-image.png'
               }}
             />
-          </a>
+          </Link>
         </div>
         
         <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
           <div className="nav-item">
-            <a href="/about">About <FiChevronDown className="dropdown-icon" /></a>
+            <NavLink to="/about">About <FiChevronDown className="dropdown-icon" /></NavLink>
             <div className="dropdown-content">
-              <a href="/about/company">Company</a>
-              <a href="/about/team">Team</a>
-              <a href="/about/mission">Mission</a>
+              <NavLink to="/about/company">Company</NavLink>
+              <NavLink to="/about/team">Team</NavLink>
+              {/* <NavLink to="/about/mission">Mission</NavLink> */}
             </div>
           </div>
           
           <div className="nav-item">
-            <a href="/solutions">Solutions <FiChevronDown className="dropdown-icon" /></a>
+            <NavLink to="/solutions">Solutions <FiChevronDown className="dropdown-icon" /></NavLink>
             <div className="dropdown-content">
-              <a href="/solutions/biochar">Biochar Production</a>
-              <a href="/solutions/credits">Carbon Credits</a>
-              <a href="/solutions/consulting">Consulting</a>
+              <NavLink to="/solutions/biochar">Biochar Production</NavLink>
+              <NavLink to="/solutions/credits">Carbon Credits</NavLink>
+              <NavLink to="/solutions/consulting">Consulting</NavLink>
             </div>
           </div>
           
-          <a href="/technology">Technology</a>
-          <a href="/impact">Impact</a>
-          <a href="/contact">Contact</a>
+          <NavLink to="/technology">Technology</NavLink>
+          <NavLink to="/impact">Impact</NavLink>
           <button className="navbar-cta">Get Started</button>
         </div>
 

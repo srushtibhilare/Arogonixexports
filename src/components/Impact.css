@@ -1,0 +1,232 @@
+:root {
+  --primary-color: #2a7f62;
+  --secondary-color: #3aa76d;
+  --accent-color: #f5a623;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.impact-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 4rem 0rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-header h1, .section-header h2 {
+  color: var(--primary-color);
+  margin-left: 0.5rem;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background: rgba(42, 127, 98, 0.1);
+  padding: 0.8rem;
+  border-radius: 50%;
+}
+
+/* Corporate Profile */
+.profile-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+  border-left: 4px solid var(--primary-color);
+}
+
+.profile-card h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.profile-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.profile-item {
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--light-bg);
+  transition: all 0.3s ease;
+}
+
+.profile-item strong {
+  color: var(--primary-color);
+}
+
+/* Environmental Impact */
+.environmental-impact {
+  margin: 4rem 0;
+}
+
+.impact-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.stat-icon-container {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  background: rgba(42, 127, 98, 0.1);
+  border-radius: 50%;
+}
+
+.stat-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 1rem 0;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-description {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Certifications */
+.certifications ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.certifications li {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.certifications li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Contact Info */
+.contact-info address {
+  font-style: normal;
+  line-height: 1.6;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.contact-info p {
+  background: white;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Disclaimer */
+.disclaimer {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(245, 166, 35, 0.1);
+  border-radius: 12px;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.stat-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-card {
+    width: 100%;
+    max-width: none;
+  }
+}
