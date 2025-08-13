@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { FaInstagram, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -25,13 +26,18 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="csr-partners">
-          <h4>Trusted by corporates and institutions working toward a greener tomorrow.</h4>
-          <div className="partner-logos">
-            {/* Placeholder for partner logos */}
-            <div className="logo-placeholder"></div>
-            <div className="logo-placeholder"></div>
-            <div className="logo-placeholder"></div>
+        <div className="social-section">
+          <h4>Connect With Us</h4>
+          <div className="social-logos">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram className="social-logo instagram" />
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <FaWhatsapp className="social-logo whatsapp" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <FaTwitter className="social-logo twitter" />
+            </a>
           </div>
         </div>
         
@@ -40,7 +46,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
