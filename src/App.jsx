@@ -7,8 +7,8 @@ import Projects from './components/Projects';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Company from './components/about/Company';
-import Team from './components/about/Team';
+import Company from './components/About/Company';
+import Team from './components/About/Team';
 import Impact from './components/Impact'; // Make sure to create this component
 import Technology from './components/Technology';
 import './App.css';
