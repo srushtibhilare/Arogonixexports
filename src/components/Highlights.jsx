@@ -31,7 +31,7 @@ const CombinedHighlights = () => {
       description: "Innovative biotech solutions for enhanced crop yield and soil health.",
       icon: <FaSeedling className="icon" />,
       secondaryIcon: <FaDna className="secondary-icon" />,
-      color: "#ef2d4eff",
+      color: "#2d30efff",
       delay: 0.5
     },
     {
@@ -39,7 +39,7 @@ const CombinedHighlights = () => {
       description: "Compliance and certification services for biotech startups and products.",
       icon: <FaCertificate className="icon" />,
       secondaryIcon: <FaShieldAlt className="secondary-icon" />,
-      color: "#FFC75F",
+      color: "#575653ff",
       delay: 0.7
     },
     {
@@ -72,18 +72,18 @@ const CombinedHighlights = () => {
   };
 
   const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut"
       }
     },
     hover: {
-      y: -10,
-      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)"
+      y: -5,
+      boxShadow: "0 15px 30px rgba(0, 0, 0, 0.1)"
     },
     tap: {
       scale: 0.98
@@ -96,9 +96,9 @@ const CombinedHighlights = () => {
         <div className="content-column">
           <motion.h2 
             className="section-title"
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
             Solutions <span className="title-gradient">💡</span>
           </motion.h2>
@@ -108,12 +108,12 @@ const CombinedHighlights = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             {highlights.map((highlight, index) => (
               <motion.div
                 key={index}
-                className={`highlight-card ${index % 2 !== 0 ? 'secondary' : ''}`}
+                className="highlight-card"
                 variants={cardVariants}
                 whileHover="hover"
                 whileTap="tap"

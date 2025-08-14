@@ -38,7 +38,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-       
+            All About <span className="highlight-text">Our Mission</span>
           </motion.h2>
         </div>
 
