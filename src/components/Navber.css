@@ -33,7 +33,7 @@
     --secondary-color: var(--dark-secondary);
     --light-bg: var(--dark-bg);
     --dark-text: var(--dark-text-light);
-    --gray-light: #2D343A;
+    --gray-light: #000101;
   }
 }
 
@@ -206,7 +206,7 @@ body {
 @media (prefers-color-scheme: dark) {
   .dropdown-content {
     background-color: var(--dark-surface);
-    border-color: #3A424A;
+    border-color: #071018;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
 }
