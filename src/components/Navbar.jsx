@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
+import { FiMenu, FiX, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 import './Navber.css';
@@ -8,13 +8,28 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+      if (window.innerWidth >= 1024) {
+        setIsOpen(false);
+        document.body.classList.remove('menu-open');
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -35,11 +50,17 @@ const Navbar = () => {
     }
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.classList.remove('menu-open');
+    setActiveDropdown(null);
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo-wrapper">
-          <Link to="/" className="logo-link">
+          <Link to="/" className="logo-link" onClick={closeMenu}>
             <img 
               src={logo} 
               alt="Company Logo" 
@@ -57,12 +78,22 @@ const Navbar = () => {
             <button 
               className="nav-link-button" 
               onClick={() => toggleDropdown('about')}
+              aria-expanded={activeDropdown === 'about'}
+              aria-controls="about-dropdown"
             >
-              About <FiChevronDown className={`dropdown-icon ${activeDropdown === 'about' ? 'active' : ''}`} />
+              About 
+              {activeDropdown === 'about' ? (
+                <FiChevronUp className="dropdown-icon" />
+              ) : (
+                <FiChevronDown className="dropdown-icon" />
+              )}
             </button>
-            <div className={`dropdown-content ${activeDropdown === 'about' ? 'active' : ''}`}>
-              <NavLink to="/about/company" onClick={() => setIsOpen(false)}>Company</NavLink>
-              <NavLink to="/about/team" onClick={() => setIsOpen(false)}>Team</NavLink>
+            <div 
+              id="about-dropdown"
+              className={`dropdown-content ${activeDropdown === 'about' ? 'active' : ''}`}
+            >
+              <NavLink to="/about/company" onClick={closeMenu}>Company</NavLink>
+              <NavLink to="/about/team" onClick={closeMenu}>Team</NavLink>
             </div>
           </div>
           
@@ -70,28 +101,46 @@ const Navbar = () => {
             <button 
               className="nav-link-button" 
               onClick={() => toggleDropdown('solutions')}
+              aria-expanded={activeDropdown === 'solutions'}
+              aria-controls="solutions-dropdown"
             >
-              Solutions <FiChevronDown className={`dropdown-icon ${activeDropdown === 'solutions' ? 'active' : ''}`} />
+              Solutions 
+              {activeDropdown === 'solutions' ? (
+                <FiChevronUp className="dropdown-icon" />
+              ) : (
+                <FiChevronDown className="dropdown-icon" />
+              )}
             </button>
-            <div className={`dropdown-content ${activeDropdown === 'solutions' ? 'active' : ''}`}>
-              <NavLink to="/solutions/biochar" onClick={() => setIsOpen(false)}>Biochar Production</NavLink>
-              <NavLink to="/solutions/credits" onClick={() => setIsOpen(false)}>Carbon Credits</NavLink>
-              <NavLink to="/solutions/consulting" onClick={() => setIsOpen(false)}>Consulting</NavLink>
+            <div 
+              id="solutions-dropdown"
+              className={`dropdown-content ${activeDropdown === 'solutions' ? 'active' : ''}`}
+            >
+              <NavLink to="/solutions/biochar" onClick={closeMenu}>Biochar Production</NavLink>
+              <NavLink to="/solutions/credits" onClick={closeMenu}>Carbon Credits</NavLink>
+              <NavLink to="/solutions/consulting" onClick={closeMenu}>Consulting</NavLink>
             </div>
           </div>
           
-          <NavLink to="/technology" className="nav-link" onClick={() => setIsOpen(false)}>Technology</NavLink>
-          <NavLink to="/impact" className="nav-link" onClick={() => setIsOpen(false)}>Impact</NavLink>
-          <button className="navbar-cta" onClick={() => setIsOpen(false)}>Get Started</button>
+          <NavLink to="/technology" className="nav-link" onClick={closeMenu}>Technology</NavLink>
+          <NavLink to="/impact" className="nav-link" onClick={closeMenu}>Impact</NavLink>
+          
+          <div className="mobile-cta-wrapper">
+            <button className="navbar-cta" onClick={closeMenu}>Get Started</button>
+          </div>
         </div>
 
-        <div className="navbar-toggle" onClick={toggleMenu}>
+        <button 
+          className="navbar-toggle" 
+          onClick={toggleMenu}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+        >
           {isOpen ? (
             <FiX size={24} className="toggle-icon" />
           ) : (
             <FiMenu size={24} className="toggle-icon" />
           )}
-        </div>
+        </button>
       </div>
     </nav>
   );

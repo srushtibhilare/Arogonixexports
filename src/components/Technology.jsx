@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCogs, FaLeaf, FaChartLine, FaLightbulb, FaRecycle, FaShieldAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import './Technology.css';
 
 const Technology = () => {
-  // Animation variants
+  // Auto-scroll down effect on page load
+  useEffect(() => {
+    const scrollToContent = () => {
+      // Scroll to the main content section below the hero
+      const contentSection = document.querySelector('.page-content');
+      if (contentSection) {
+        const navbarHeight = 70; // Match your --nav-height
+        const contentPosition = contentSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: contentPosition,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    // Delay slightly to ensure page is loaded
+    const timer = setTimeout(scrollToContent, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Rest of your existing code...
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -99,6 +120,7 @@ const Technology = () => {
 
       <div className="page-content">
         <motion.section 
+          id="tech-solutions"
           className="tech-solutions"
           variants={itemVariants}
         >
@@ -129,6 +151,7 @@ const Technology = () => {
         </motion.section>
 
         <motion.section 
+          id="tech-features"
           className="tech-features"
           variants={itemVariants}
         >
@@ -155,6 +178,7 @@ const Technology = () => {
         </motion.section>
 
         <motion.section 
+          id="tech-process"
           className="tech-process"
           variants={itemVariants}
         >
