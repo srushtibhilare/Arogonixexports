@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
+// import logo from '../assets/logo.jpeg';
 import './Navber.css';
 
 const Navbar = () => {

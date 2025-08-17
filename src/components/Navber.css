@@ -11,7 +11,7 @@
   --gray-light: #E2E8F0;          /* Light gray */
 
   /* Fresh colors for mobile menu lines */
-  --menu-line-1: #4ECDC4;         /* Teal */
+  --menu-line-1: #75b9b4;         /* Teal */
   --menu-line-2: #FF6B6B;         /* Coral */
   --menu-line-3: #FFE66D;         /* Yellow */
 
@@ -63,7 +63,7 @@ body {
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(234, 245, 233, 0.96);
+  background-color: rgba(67, 101, 63, 0.96);
   backdrop-filter: blur(var(--blur-intensity));
   -webkit-backdrop-filter: blur(var(--blur-intensity));
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
