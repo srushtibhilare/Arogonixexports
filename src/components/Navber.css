@@ -1,22 +1,20 @@
-/* Modern CSS Variables with Dark Mode Support */
+/* Modern CSS with Fresh Colors */
 :root {
-  /* Light Mode Colors */
-  --primary-color: #FF6B6B;
-  --primary-hover: #FF5252;
-  --secondary-color: #4ECDC4;
-  --accent-color: #FFE66D;
-  --light-bg: #F7FFF7;
-  --dark-text: #292F36;
-  --light-text: #FFFFFF;
-  --gray-light: #E2E8F0;
-  
-  /* Dark Mode Colors */
-  --dark-primary: #FF8E8E;
-  --dark-secondary: #6AD4CD;
-  --dark-bg: #1A1F24;
-  --dark-surface: #242A30;
-  --dark-text-light: #E8EDF3;
-  
+  /* Vibrant Color Palette */
+  --primary-color: #FF6B6B;       /* Coral */
+  --primary-hover: #FF5252;       /* Darker coral */
+  --secondary-color: #4ECDC4;     /* Teal */
+  --accent-color: #FFE66D;        /* Yellow */
+  --light-bg: #F7FFF7;            /* Off-white */
+  --dark-text: #292F36;           /* Dark gray */
+  --light-text: #FFFFFF;          /* White */
+  --gray-light: #E2E8F0;          /* Light gray */
+
+  /* Fresh colors for mobile menu lines */
+  --menu-line-1: #4ECDC4;         /* Teal */
+  --menu-line-2: #FF6B6B;         /* Coral */
+  --menu-line-3: #FFE66D;         /* Yellow */
+
   /* Functional Variables */
   --transition-speed: 0.3s;
   --transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -24,17 +22,6 @@
   --blur-intensity: 12px;
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: var(--dark-primary);
-    --primary-hover: #FF6B6B;
-    --secondary-color: var(--dark-secondary);
-    --light-bg: var(--dark-bg);
-    --dark-text: var(--dark-text-light);
-    --gray-light: #000101;
-  }
 }
 
 /* Base Reset with Improved Touch Response */
@@ -69,7 +56,7 @@ body {
   padding-top: calc(var(--nav-height) + var(--safe-area-inset-top));
 }
 
-/* Enhanced Navbar with Safe Area Support */
+/* Enhanced Navbar */
 .navbar {
   position: fixed;
   top: var(--safe-area-inset-top);
@@ -85,24 +72,10 @@ body {
   padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .navbar {
-    background-color: rgba(26, 31, 36, 0.96);
-    border-bottom-color: rgba(255, 255, 255, 0.05);
-  }
-}
-
 .navbar.scrolled {
   height: calc(var(--nav-height) - 10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background-color: rgba(247, 255, 247, 0.98);
-}
-
-@media (prefers-color-scheme: dark) {
-  .navbar.scrolled {
-    background-color: rgba(26, 31, 36, 0.98);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
 }
 
 .navbar-container {
@@ -116,7 +89,7 @@ body {
   gap: 1rem;
 }
 
-/* Logo with Aspect Ratio Preservation */
+/* Logo */
 .logo-wrapper {
   height: 100%;
   display: flex;
@@ -143,7 +116,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Navigation Links with Improved Touch Targets */
+/* Navigation Links */
 .navbar-links {
   display: flex;
   align-items: center;
@@ -162,7 +135,7 @@ body {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  min-height: 44px; /* Apple HIG minimum touch target */
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
@@ -171,7 +144,7 @@ body {
   color: var(--primary-color);
 }
 
-/* Dropdown Menu with ARIA Support */
+/* Dropdown Menu */
 .nav-item {
   position: relative;
   display: flex;
@@ -203,14 +176,6 @@ body {
   border: 1px solid var(--gray-light);
 }
 
-@media (prefers-color-scheme: dark) {
-  .dropdown-content {
-    background-color: var(--dark-surface);
-    border-color: #071018;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-}
-
 .dropdown-content.active {
   opacity: 1;
   visibility: visible;
@@ -235,7 +200,7 @@ body {
   padding-left: 1.75rem;
 }
 
-/* CTA Button with Gradient Animation */
+/* CTA Button */
 .navbar-cta {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   background-size: 200% 200%;
@@ -267,7 +232,7 @@ body {
   transform: translateY(0);
 }
 
-/* Mobile Menu Toggle with Animation */
+/* Mobile Menu Toggle with Fresh Colors */
 .navbar-toggle {
   display: none;
   cursor: pointer;
@@ -279,19 +244,41 @@ body {
   min-width: 44px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.toggle-icon {
-  color: var(--dark-text);
+.toggle-line {
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
   transition: all var(--transition-speed) ease;
-  font-size: 1.5rem;
 }
 
-.toggle-icon:hover {
-  color: var(--primary-color);
+.toggle-line:nth-child(1) {
+  background-color: var(--menu-line-1); /* Teal */
+}
+.toggle-line:nth-child(2) {
+  background-color: var(--menu-line-2); /* Coral */
+}
+.toggle-line:nth-child(3) {
+  background-color: var(--menu-line-3); /* Yellow */
 }
 
-/* Enhanced Mobile Menu with Viewport Units */
+/* When menu is active - transform into X */
+.navbar-toggle.active .toggle-line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  background-color: var(--primary-color);
+}
+.navbar-toggle.active .toggle-line:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.active .toggle-line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  background-color: var(--primary-color);
+}
+
+/* Mobile Menu Styles */
 @media (max-width: 1024px) {
   .navbar-links {
     position: fixed;
