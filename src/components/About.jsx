@@ -8,105 +8,113 @@ const About = () => {
     {
       icon: <FaLeaf className="icon" />,
       title: "Sustainable Agriculture",
-      description: "Empower farmers with sustainable income streams through innovative agri-tech solutions."
+      description: "Promote eco-friendly farming while creating opportunities for farmers through agri-tech innovations."
     },
     {
       icon: <FaRecycle className="icon" />,
       title: "Waste Transformation",
-      description: "Convert agricultural waste into high-value products like biochar through advanced pyrolysis."
+      description: "Convert crop residues into biochar, organic fertilizers, and eco-friendly products using clean pyrolysis."
     },
     {
       icon: <FaChartLine className="icon" />,
       title: "Carbon Neutrality",
-      description: "Enable industries to achieve carbon neutrality via blockchain-verified carbon credits."
+      description: "Support industries in achieving carbon neutrality with blockchain-verified carbon credits."
     },
     {
       icon: <FaHandsHelping className="icon" />,
       title: "Rural Development",
-      description: "Drive economic growth through CSR partnerships and clean technology adoption."
+      description: "Empower rural communities with employment and CSR-driven clean technology adoption."
     }
   ];
 
   return (
     <section className="about-section" id="about">
       <div className="container">
-        {/* Centered Title Section */}
-        <div className="centered-title-wrapper">
-          <motion.h2 
-            className="section-title centered-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            All About <span className="highlight-text">Our Mission</span>
-          </motion.h2>
-        </div>
+        {/* Section Title */}
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          About<span className="highlight-text"></span>
+        </motion.h2>
 
         <div className="about-content">
-          {/* Left Column - Animated Visualization */}
+          {/* Left Visualization */}
           <motion.div 
             className="about-visual"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <div className="energy-animation">
-              <div className="energy-core">
-                <div className="energy-pulse"></div>
-                {[...Array(4)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="energy-particle" 
-                    style={{ '--delay': `${i * 0.5}s` }}
-                  />
-                ))}
-                <div className="energy-icon">
-                  <FaLeaf className="icon-main" />
-                </div>
-              </div>
-              <div className="energy-connection energy-connection-1"></div>
-              <div className="energy-connection energy-connection-2"></div>
-              <div className="energy-node">
-                <FaRecycle className="icon-node" />
-              </div>
-              <div className="energy-node energy-node-2">
-                <FaChartLine className="icon-node" />
-              </div>
+            <div className="waste-animation">
+              <motion.div 
+                className="waste-core"
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+              >
+                <FaRecycle className="icon-main" />
+              </motion.div>
+
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="waste-particle"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ 
+                    scale: [0, 1, 0.8], 
+                    opacity: [0, 1, 0], 
+                    x: [0, (i + 1) * 40], 
+                    y: [0, -(i + 1) * 30] 
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 3 + i, 
+                    delay: i * 0.8 
+                  }}
+                />
+              ))}
             </div>
           </motion.div>
 
-          {/* Right Column - Animated Content */}
-          <div className="about-text">
-            <motion.p
-              className="lead-text"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Arogonix Exports bridges agriculture, energy, and carbon finance through innovative clean technology.
-            </motion.p>
-            
+          {/* Right Content */}
+          <motion.div 
+            className="about-text"
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="lead-text">
+              We transform agricultural waste into valuable eco-products, helping both the planet and rural communities thrive.
+            </p>
+
             <div className="mission-grid">
               {missionItems.map((item, index) => (
                 <motion.div
                   key={index}
                   className="mission-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.4 + index * 0.15,
-                    duration: 0.5,
+                    delay: index * 0.2,
+                    duration: 0.6,
                     type: "spring",
-                    stiffness: 100
+                    stiffness: 90
                   }}
+                  viewport={{ once: true }}
                   whileHover={{
-                    y: -10,
-                    boxShadow: "0 15px 30px rgba(0, 201, 167, 0.2)"
+                    y: -8,
+                    scale: 1.05,
+                    boxShadow: "0 15px 30px rgba(0, 201, 167, 0.25)"
                   }}
                 >
                   <motion.div 
                     className="mission-icon"
-                    whileHover={{ rotate: 15, scale: 1.1 }}
+                    whileHover={{ rotate: 20, scale: 1.1 }}
                   >
                     {item.icon}
                   </motion.div>
@@ -115,7 +123,7 @@ const About = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
